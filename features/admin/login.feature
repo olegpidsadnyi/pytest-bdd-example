@@ -10,7 +10,6 @@ Scenario: Successful login
 
 
 Scenario: Unsuccessful login
-	Given I'm an admin user
 
 	When I open the login page
 	And I fill in wrong login credentials
