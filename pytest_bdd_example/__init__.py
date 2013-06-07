@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint
+from flask import Flask
 from flask.ext.admin import Admin
 from flask.ext.login import LoginManager
 from flask.ext.sqlalchemy import SQLAlchemy
@@ -16,13 +16,15 @@ from flask.ext.admin.contrib.sqlamodel import ModelView
 from pytest_bdd_example import dashboard
 from pytest_bdd_example.dashboard.models import User
 
-# app.register_blueprint(dashboard.bp, url_prefix='/dashboard')
 
-# login_manager.init_app(app)
+app.register_blueprint(dashboard.bp, url_prefix='/dashboard')
 
-# @login_manager.user_loader
-# def load_user(userid):
-#     return User.get(userid)
+login_manager.init_app(app)
+
+
+@login_manager.user_loader
+def load_user(userid):
+    return User.get(userid)
 
 
 admin_panel = Admin(app)

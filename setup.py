@@ -26,7 +26,11 @@ setup(
     version='0.1',
     cmdclass={'test': PyTest},
     install_requires=[
-        'flask-auth',
+        'flask-admin',
+        'flask-script',
+        'flask-login',
+        'flask-security',
+        'flask-sqlalchemy',
     ],
     tests_require=[
         'pytest-bdd-splinter',
