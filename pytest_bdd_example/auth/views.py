@@ -1,13 +1,13 @@
 from flask import request, url_for, redirect, render_template
 from flask.ext.login import login_user
 
-from . import bp
+from .blueprint import auth
 from .decorators import public_endpoint
 from .forms import LoginForm
 from .models import User
 
 
-@bp.route('/login/', methods=['GET', 'POST'])
+@auth.route('/login/', methods=['GET', 'POST'])
 @public_endpoint
 def login():
     form = LoginForm()
