@@ -6,10 +6,12 @@ from pytest_bdd_example.dashboard.forms import LoginForm
 
 bp = Blueprint('dashboard', __name__)
 
+
 @bp.route('/')
 @login_required
 def index(template='dashboard.html'):
     return render_template(template)
+
 
 @bp.route('/login/', methods=['GET', 'POST'])
 def login():

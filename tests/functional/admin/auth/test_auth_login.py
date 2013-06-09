@@ -27,6 +27,11 @@ def post_the_form():
     pass
 
 
+@then('I should see an error message')
+def should_see_error_message():
+    pass
+
+
 @then('I shouldn\'t see an error message')
 def shouldnt_see_error_message():
     pass
