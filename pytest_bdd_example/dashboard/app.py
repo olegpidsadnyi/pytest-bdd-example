@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 
 from pytest_bdd_example.dashboard import settings

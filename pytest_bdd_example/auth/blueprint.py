@@ -3,7 +3,7 @@ from flask import Blueprint
 from .manager import login_manager, check_valid_login
 from .models import db
 
-auth = Blueprint('auth', __name__, template_folder='auth')
+auth = Blueprint('auth', __name__, template_folder='../')
 
 
 @auth.record_once
