@@ -9,6 +9,14 @@ association_table = db.Table('association', Base.metadata,
     db.Column('right_id', db.Integer, db.ForeignKey('right.id'))
 )
 
+class Author(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+
+    first_name = db.Column(db.String(30))
+    last_name = db.Column(db.String(30))
+    sur_name = db.Column(db.String(30))
+
+
 class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
@@ -16,11 +24,3 @@ class Book(db.Model):
     description = db.Column(db.Text)
 
     authors = db.relationship("Author", secondary=association_table, backref="books", order_by="Author.id")
-
-
-class Author(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-
-    first_name = db.Column(db.String(30))
-    last_name = db.Column(db.String(30))
-    sur_name = db.Column(db.String(30))
