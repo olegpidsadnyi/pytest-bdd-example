@@ -1,4 +1,4 @@
-from .app import app
+from .app import app, db
 
 
-__all__ = ['app']
+__all__ = ['app', 'db']
