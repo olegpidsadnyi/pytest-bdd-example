@@ -14,7 +14,7 @@ def password():
 @pytest.fixture
 def user(password):
     u = User(
-        username=random_string(),
+        username=u'{0}@example.com'.format(random_string(7)),
         password=password,
     )
     db.session.add(u)
