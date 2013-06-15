@@ -1,8 +1,8 @@
-from flask import render_template
+from flask import redirect, url_for
 
 from .app import app
 
 
 @app.route('/')
-def index(template='dashboard.html'):
-    return render_template(template)
+def index():
+    return redirect(url_for('admin.index'))

@@ -17,6 +17,7 @@ def user(password):
         username=u'{0}'.format(random_string()),
         email="{0}@example.com".format(random_string(7)),
         password=password,
+        active=True,
     )
     session.add(u)
     session.commit()

@@ -17,3 +17,11 @@ class User(db.Model, UserMixin):
     role = db.Column(db.SmallInteger, default=ROLE_USER)
     active = db.Column(db.Boolean, default=False)
 
+    def get_id(self):
+        return unicode(self.id)
+
+    def is_active(self):
+        return self.active
+
+    def is_anonymous(self):
+        return False

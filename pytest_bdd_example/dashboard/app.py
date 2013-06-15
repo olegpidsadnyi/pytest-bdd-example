@@ -22,3 +22,7 @@ with app.app_context():
 
     app.register_blueprint(auth, url_prefix='/auth')
     app.register_blueprint(book)
+
+
+# Register the views
+from .views import *
