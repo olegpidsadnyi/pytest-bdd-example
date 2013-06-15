@@ -1,5 +1,5 @@
-from .models import db, Author, Book
+from .models import Author, Book
 from .blueprint import book
 
 
-__all__ = ['book', 'db', 'Author', 'Book']
+__all__ = ['book', 'Author', 'Book']

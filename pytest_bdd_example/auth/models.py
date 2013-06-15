@@ -1,8 +1,9 @@
+from flask import current_app
+
 from flask.ext.security import UserMixin
 
-from flask.ext.sqlalchemy import SQLAlchemy
 
-db = SQLAlchemy()
+db = current_app.config['db']
 
 ROLE_USER = 0
 ROLE_ADMIN = 1
