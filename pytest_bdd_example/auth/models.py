@@ -3,7 +3,7 @@ from flask import current_app
 from flask.ext.security import UserMixin
 
 
-db = current_app.config['db']
+db = current_app.extensions['sqlalchemy'].db
 
 ROLE_USER = 0
 ROLE_ADMIN = 1

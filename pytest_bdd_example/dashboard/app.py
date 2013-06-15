@@ -15,7 +15,6 @@ app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 
 db = SQLAlchemy(app)
-app.config['db'] = db
 
 with app.app_context():
     from pytest_bdd_example.auth import auth

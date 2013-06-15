@@ -1,6 +1,6 @@
 from flask import current_app
 
-db = current_app.config['db']
+db = current_app.extensions['sqlalchemy'].db
 
 
 class Author(db.Model):
