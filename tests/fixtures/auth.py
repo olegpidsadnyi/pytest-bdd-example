@@ -14,7 +14,7 @@ def password():
 def user(password):
     session = User.query.session
     u = User(
-        username=u'{0}'.format(random_string(7)),
+        username=u'{0}'.format(random_string()),
         email="{0}@example.com".format(random_string(7)),
         password=password,
     )
