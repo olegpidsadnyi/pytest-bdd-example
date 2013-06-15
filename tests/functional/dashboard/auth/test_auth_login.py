@@ -26,7 +26,7 @@ def go_to_login_page(browser):
 
 @when('I fill in the login credentials')
 def fill_in_login_credentials(browser, user, password):
-    browser.fill('email', user.username)
+    browser.fill('username', user.username)
     browser.fill('password', password)
 
 
@@ -41,13 +41,13 @@ def should_see_error_message():
 
 
 @then('I shouldn\'t see an error message')
-def shouldnt_see_error_message():
+def shouldnt_see_error_message(browser):
     pass
 
 
 @then('I should see the Dashboard page')
-def should_see_dashboard():
-    pass
+def should_see_dashboard(browser):
+    assert not browser.is_text_present('Please sign in')
 
 
 # test_successful_login = scenario(

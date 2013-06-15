@@ -13,7 +13,12 @@ def login():
     form = LoginForm()
 
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
+        user = (
+            User.query
+            .filter(User.username == form.username.data)
+            .first()
+        )
+        #TODO: if user is not found
         login_user(user)
         return redirect(request.args.get('next') or url_for('index'))
 

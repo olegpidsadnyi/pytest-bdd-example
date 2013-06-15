@@ -10,14 +10,14 @@
 
     <div class="control-group">
         <div class="controls">
-            {{ form.email(placeholder="Email address", class="input-block-level") }}
-            <ul class="errors">{% for error in form.email.errors %}<li>{{ error|e }}</li>{% endfor %}</ul>
+            {{ form.username(placeholder=form.username.label.text, class="input-block-level") }}
+            <ul class="errors">{% for error in form.username.errors %}<li>{{ error|e }}</li>{% endfor %}</ul>
         </div>
     </div>
 
     <div class="control-group">
         <div class="controls">
-            {{ form.password(placeholder="Password", class="input-block-level") }}
+            {{ form.password(placeholder=form.password.label.text, class="input-block-level") }}
             <ul class="errors">{% for error in form.password.errors %}<li>{{ error|e }}</li>{% endfor %}</ul>
         </div>
     </div>
