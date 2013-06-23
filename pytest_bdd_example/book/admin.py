@@ -8,11 +8,19 @@ from pytest_bdd_example.book import db, Book, Author
 
 admin = current_app.extensions['admin'][0]
 
+admin_role = Permission(RoleNeed('admin'))
+
 
 class AuthorView(ModelView):
+    """Author view.
 
+    Only admin can see it.
+    """
     def is_visible(self):
-        return Permission(RoleNeed('admin')).can()
+        return admin_role.can()
+
+    def is_accessible(self):
+        return admin_role.can()
 
 
 admin.add_view(
