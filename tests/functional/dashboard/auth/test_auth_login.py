@@ -1,27 +1,18 @@
 import pytest
-from pytest_bdd import scenario, given, when, then
+import splinter
 
-
-@pytest.fixture
-def pytestbdd_close_browser():
-    """Close browser fixture."""
-    return False
+from pytest_bdd import scenario, when, then
 
 
 test_successful_login = scenario(
-    'auth/admin_login.feature',
+    'auth/dashboard_login.feature',
     'Successful login',
 )
 
 
-@given('I\'m an admin user')
-def admin_user(user):
-    return user
-
-
 @when('I go to the admin login page')
 def go_to_login_page(browser):
-    browser.visit('http://127.0.0.1:5000')
+    browser.visit('http://127.0.0.1:5000/login')
 
 
 @when('I fill in the login credentials')
@@ -36,13 +27,14 @@ def post_the_form(browser):
 
 
 @then('I should see an error message')
-def should_see_error_message():
-    pass
+def should_see_error_message(browser):
+    assert browser.find_by_css('.alert-error').first
 
 
 @then('I shouldn\'t see an error message')
 def shouldnt_see_error_message(browser):
-    pass
+    with pytest.raises(splinter.exceptions.ElementDoesNotExist):
+        browser.find_by_css('.alert-error').first
 
 
 @then('I should see the Dashboard page')
@@ -50,12 +42,13 @@ def should_see_dashboard(browser):
     assert not browser.is_text_present('Please sign in')
 
 
-# test_successful_login = scenario(
-#     'auth/admin_login.feature',
-#     'Unsuccessful login',
-# )
+test_unsuccessful_login = scenario(
+    'auth/dashboard_login.feature',
+    'Unsuccessful login',
+)
 
 
 @when('I fill in wrong login credentials')
-def fill_in_wrong_credentials():
-    pass
+def fill_in_wrong_credentials(browser):
+    browser.fill('username', 'HELP!')
+    browser.fill('password', 'I pressed any key')

@@ -8,12 +8,12 @@ def create_initial_data():
     db = current_app.extensions['sqlalchemy'].db
 
     print 'Creating roles...'
-    admin_role = user_datastore.create_role(
+    admin_role = user_datastore.find_or_create_role(
         name='admin',
         description='Administrators',
     )
 
-    author_role = user_datastore.create_role(
+    author_role = user_datastore.find_or_create_role(
         name='author',
         description='Book authors',
     )
