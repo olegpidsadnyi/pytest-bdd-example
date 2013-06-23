@@ -3,6 +3,7 @@ from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 from pytest_bdd_example.dashboard import settings
 
+from .admin import admin
 
 app = Flask(
     __name__,
@@ -13,6 +14,7 @@ app = Flask(
 app.config.from_object('pytest_bdd_example.dashboard.settings')
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
+admin.init_app(app)
 
 db = SQLAlchemy(app)
 
@@ -22,7 +24,6 @@ with app.app_context():
 
     app.register_blueprint(auth, url_prefix='/auth')
     app.register_blueprint(book)
-
 
 # Register the views
 from .views import *

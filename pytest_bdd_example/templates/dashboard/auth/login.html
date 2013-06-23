@@ -34,21 +34,23 @@
 {% block menu %}{% endblock %}
 
 {% block content %}
+
 <form class="form-signin" method='POST'>
-    {{ form.csrf_token }}
+    {{ login_user_form.csrf_token }}
     <h2 class="form-signin-heading">Please sign in</h2>
 
     <div class="control-group">
         <div class="controls">
-            {{ form.username(placeholder=form.username.label.text, class="input-block-level") }}
-            <ul class="errors">{% for error in form.username.errors %}<li>{{ error|e }}</li>{% endfor %}</ul>
+            {{ login_user_form.username(placeholder=login_user_form.username.label.text, class="input-block-level") }}
+
+            {% for error in login_user_form.username.errors %}<div class="alert alert-error">{{ error|e }}</div>{% endfor %}
         </div>
     </div>
 
     <div class="control-group">
         <div class="controls">
-            {{ form.password(placeholder=form.password.label.text, class="input-block-level") }}
-            <ul class="errors">{% for error in form.password.errors %}<li>{{ error|e }}</li>{% endfor %}</ul>
+            {{ login_user_form.password(placeholder=login_user_form.password.label.text, class="input-block-level") }}
+            {% for error in login_user_form.password.errors %}<div class="alert alert-error">{{ error|e }}</div>{% endfor %}
         </div>
     </div>
 

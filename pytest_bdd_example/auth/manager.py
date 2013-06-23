@@ -2,15 +2,21 @@ from flask import request, current_app
 
 from flask.ext.login import LoginManager, current_user
 
-from .models import User
+from .security import user_datastore
 
 
 login_manager = LoginManager()
-login_manager.login_view = 'auth.login'
+login_manager.login_view = 'security.login'
+
+
+PUBLIC_ENDPOINTS = [
+    'static',
+    'security.login',
+]
 
 
 def check_valid_login():
-    if 'static' == request.endpoint:
+    if request.endpoint in PUBLIC_ENDPOINTS:
         return
 
     if getattr(current_app.view_functions.get(request.endpoint), 'is_public', False):
@@ -22,4 +28,4 @@ def check_valid_login():
 
 @login_manager.user_loader
 def load_user(userid):
-    return User.query.get(userid)
+    return user_datastore.find_user(id=userid)
