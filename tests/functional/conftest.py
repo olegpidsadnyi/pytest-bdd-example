@@ -6,9 +6,9 @@ from .fixtures.auth import *
 from .fixtures.steps import *
 
 
-# @pytest.fixture(scope='session')
-# def pytestbdd_selenium_speed():
-#     return 0.5
+@pytest.fixture(scope='session')
+def pytestbdd_selenium_speed():
+    return 0.5
 
 
 @pytest.fixture

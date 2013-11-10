@@ -1,7 +1,7 @@
 import re
 from urlparse import urljoin
 
-from pytest_bdd import given, when, scenario
+from pytest_bdd import when, scenario
 
 
 test_sucsessful_login = scenario(
